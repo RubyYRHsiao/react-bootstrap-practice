@@ -1,9 +1,9 @@
-const TodoRowItems = () =>{
-  return(
+const TodoRowItems = (props) => {
+  return (
     <tr>
-      <th scope='row'>1</th>
-      <td>task1</td>
-      <td>Eric</td>
+      <th scope='row'>{props.rowNumber}</th>
+      <td>{props.rowDescription}</td>
+      <td>{props.rowAssigned}</td>
     </tr>
   )
 }
