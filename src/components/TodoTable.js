@@ -11,21 +11,13 @@ const TodoTable = (props) => {
       </tr>
       </thead>
       <tbody>
-      <TodoRowItems
-        rowNumber={props.todos[0].rowNumber}
-        rowDescription={props.todos[0].rowDescription}
-        rowAssigned={props.todos[0].rowAssigned}
-      />
-      <TodoRowItems
-        rowNumber={props.todos[1].rowNumber}
-        rowDescription={props.todos[1].rowDescription}
-        rowAssigned={props.todos[1].rowAssigned}
-      />
-      <TodoRowItems
-        rowNumber={props.todos[2].rowNumber}
-        rowDescription={props.todos[2].rowDescription}
-        rowAssigned={props.todos[2].rowAssigned}
-      />
+      {props.todos.map(todo =>
+        <TodoRowItems
+          rowNumber={todo.rowNumber}
+          rowDescription={todo.rowDescription}
+          rowAssigned={todo.rowAssigned}
+        />
+      )}
       </tbody>
     </table>
   )
