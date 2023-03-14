@@ -1,12 +1,25 @@
+import React, { useState } from 'react';
 import './App.css';
-import TodoTable from "./components/TodoTable";
+import TodoTable from './components/TodoTable';
 
 function App() {
-  const todos = [
+  const [todos, setTodos] = useState([
     { rowNumber: 1, rowDescription: 'task1', rowAssigned: 'user1' },
     { rowNumber: 2, rowDescription: 'task2', rowAssigned: 'user2' },
     { rowNumber: 3, rowDescription: 'task3', rowAssigned: 'user3' }
-  ];
+  ]);
+
+  const addTodo = () => {
+    if (todos.length > 0) {
+      const newTodo = {
+        rowNumber: todos.length + 1,
+        rowDescription: `task${todos.length + 1}`,
+        rowAssigned: `user${todos.length + 1}`
+      };
+      setTodos(todos => [...todos, newTodo]);
+      console.log(todos);
+    }
+  }
 
   return (
     <div className='mt-5 container'>
@@ -16,6 +29,9 @@ function App() {
         </div>
         <div className='card-body'>
           <TodoTable todos={todos}/>
+          <button className='btn btn-primary' onClick={addTodo}>
+            Add new todo
+          </button>
         </div>
       </div>
     </div>
