@@ -9,6 +9,7 @@ function App() {
     { rowNumber: 2, rowDescription: 'task2', rowAssigned: 'user2' },
     { rowNumber: 3, rowDescription: 'task3', rowAssigned: 'user3' }
   ]);
+  const [showAddTodoForm, setShowAddTodoForm] = useState(false);
 
   const addTodo = (description, assigned) => {
     let rowNumber = 0;
@@ -38,10 +39,10 @@ function App() {
         </div>
         <div className='card-body'>
           <TodoTable todos={todos} deleteTodo={deleteTodo}/>
-          <button className='btn btn-primary'>
-            Add new todo
+          <button onClick={() => setShowAddTodoForm(!showAddTodoForm)} className='btn btn-primary'>
+            {showAddTodoForm ? 'Close New Todo' : 'Add New Todo'}
           </button>
-          <NewTodoForm addTodo={addTodo}/>
+          {showAddTodoForm && <NewTodoForm addTodo={addTodo}/>}
         </div>
       </div>
     </div>
