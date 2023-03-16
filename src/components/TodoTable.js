@@ -13,6 +13,7 @@ const TodoTable = (props) => {
       <tbody>
       {props.todos.map(todo =>
         <TodoRowItems
+          key={todo.rowNumber}
           rowNumber={todo.rowNumber}
           rowDescription={todo.rowDescription}
           rowAssigned={todo.rowAssigned}
