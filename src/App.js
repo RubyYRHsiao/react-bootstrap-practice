@@ -9,17 +9,26 @@ function App() {
     { rowNumber: 2, rowDescription: 'task2', rowAssigned: 'user2' },
     { rowNumber: 3, rowDescription: 'task3', rowAssigned: 'user3' }
   ]);
+  const [showAddTodoForm, setShowAddTodoForm] = useState(false);
 
   const addTodo = (description, assigned) => {
+    let rowNumber = 0;
     if (todos.length > 0) {
-      const newTodo = {
-        rowNumber: todos.length + 1,
-        rowDescription: description,
-        rowAssigned: assigned
-      };
-      setTodos(todos => [...todos, newTodo]);
-      console.log(todos);
+      rowNumber = todos[todos.length - 1].rowNumber + 1;
+    } else {
+      rowNumber = 1;
     }
+    const newTodo = {
+      rowNumber: rowNumber,
+      rowDescription: description,
+      rowAssigned: assigned
+    };
+    setTodos(todos => [...todos, newTodo]);
+    console.log(todos);
+  }
+  const deleteTodo = (deleteTodoRowNumber) => {
+    let filtered = todos.filter(todo => todo.rowNumber != deleteTodoRowNumber);
+    setTodos(filtered);
   }
 
   return (
@@ -29,11 +38,11 @@ function App() {
           Your Todolist
         </div>
         <div className='card-body'>
-          <TodoTable todos={todos}/>
-          <button className='btn btn-primary' onClick={addTodo}>
-            Add new todo
+          <TodoTable todos={todos} deleteTodo={deleteTodo}/>
+          <button onClick={() => setShowAddTodoForm(!showAddTodoForm)} className='btn btn-primary'>
+            {showAddTodoForm ? 'Close New Todo' : 'Add New Todo'}
           </button>
-          <NewTodoForm addTodo={addTodo}/>
+          {showAddTodoForm && <NewTodoForm addTodo={addTodo}/>}
         </div>
       </div>
     </div>
