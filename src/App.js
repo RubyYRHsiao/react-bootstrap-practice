@@ -25,6 +25,10 @@ function App() {
     setTodos(todos => [...todos, newTodo]);
     console.log(todos);
   }
+  const deleteTodo = (deleteTodoRowNumber) => {
+    let filtered = todos.filter(todo => todo.rowNumber != deleteTodoRowNumber);
+    setTodos(filtered);
+  }
 
   return (
     <div className='mt-5 container'>
@@ -33,8 +37,8 @@ function App() {
           Your Todolist
         </div>
         <div className='card-body'>
-          <TodoTable todos={todos}/>
-          <button className='btn btn-primary' onClick={addTodo}>
+          <TodoTable todos={todos} deleteTodo={deleteTodo}/>
+          <button className='btn btn-primary'>
             Add new todo
           </button>
           <NewTodoForm addTodo={addTodo}/>
