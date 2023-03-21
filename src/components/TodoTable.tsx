@@ -1,13 +1,14 @@
-import TodoRowItems from "./TodoRowItems";
+import React from 'react';
+import TodoRowItems from './TodoRowItems';
 
-const TodoTable = (props) => {
+const TodoTable = (props: { todos: TodoModel[], deleteTodo: Function }) => {
   return (
-    <table className='table table-hover'>
+    <table className="table table-hover">
       <thead>
       <tr>
-        <th scope='col'>#</th>
-        <th scope='col'>Description</th>
-        <th scope='col'>Assigned</th>
+        <th scope="col">#</th>
+        <th scope="col">Description</th>
+        <th scope="col">Assigned</th>
       </tr>
       </thead>
       <tbody>

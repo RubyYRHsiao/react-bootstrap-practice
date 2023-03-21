@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import TodoTable from './components/TodoTable';
-import NewTodoForm from "./components/NewTodoForm ";
+import NewTodoForm from './components/NewTodoForm';
 
 function App() {
   const [todos, setTodos] = useState([
@@ -11,7 +11,7 @@ function App() {
   ]);
   const [showAddTodoForm, setShowAddTodoForm] = useState(false);
 
-  const addTodo = (description, assigned) => {
+  const addTodo = (description: string, assigned: string) => {
     let rowNumber = 0;
     if (todos.length > 0) {
       rowNumber = todos[todos.length - 1].rowNumber + 1;
@@ -26,20 +26,20 @@ function App() {
     setTodos(todos => [...todos, newTodo]);
     console.log(todos);
   }
-  const deleteTodo = (deleteTodoRowNumber) => {
+  const deleteTodo = (deleteTodoRowNumber: number) => {
     let filtered = todos.filter(todo => todo.rowNumber != deleteTodoRowNumber);
     setTodos(filtered);
   }
 
   return (
-    <div className='mt-5 container'>
-      <div className='card'>
-        <div className='card-header'>
+    <div className="mt-5 container">
+      <div className="card">
+        <div className="card-header">
           Your Todolist
         </div>
-        <div className='card-body'>
+        <div className="card-body">
           <TodoTable todos={todos} deleteTodo={deleteTodo}/>
-          <button onClick={() => setShowAddTodoForm(!showAddTodoForm)} className='btn btn-primary'>
+          <button onClick={() => setShowAddTodoForm(!showAddTodoForm)} className="btn btn-primary">
             {showAddTodoForm ? 'Close New Todo' : 'Add New Todo'}
           </button>
           {showAddTodoForm && <NewTodoForm addTodo={addTodo}/>}
