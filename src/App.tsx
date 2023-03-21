@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import TodoTable from './components/TodoTable';
-import NewTodoForm from './components/NewTodoForm';
+import { TodoTable } from './components/TodoTable';
+import { NewTodoForm } from './components/NewTodoForm';
 
-function App() {
+export const App = () => {
   const [todos, setTodos] = useState([
     { rowNumber: 1, rowDescription: 'task1', rowAssigned: 'user1' },
     { rowNumber: 2, rowDescription: 'task2', rowAssigned: 'user2' },
@@ -48,5 +48,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
