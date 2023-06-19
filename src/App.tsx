@@ -27,7 +27,7 @@ export const App = () => {
     console.log(todos);
   }
   const deleteTodo = (deleteTodoRowNumber: number) => {
-    let filtered = todos.filter(todo => todo.rowNumber != deleteTodoRowNumber);
+    let filtered = todos.filter(todo => todo.rowNumber !== deleteTodoRowNumber);
     setTodos(filtered);
   }
 
